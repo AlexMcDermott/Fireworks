@@ -3,7 +3,7 @@ function Firework(x, y) {
   this.exploded = false;
   this.particles = [];
 
-  this.update = function() {
+  this.update = function () {
     if (!this.exploded) {
       this.firework.applyForce(gravity);
       this.firework.update();
@@ -20,29 +20,30 @@ function Firework(x, y) {
         this.particles.splice(i, 1);
       }
     }
-  }
+  };
 
-  this.done = function() {
+  this.done = function () {
     if (this.exploded && this.particles.length == 0) {
       return true;
     } else {
       return false;
     }
-  }
+  };
 
-  this.explode = function() {
+  this.explode = function () {
     for (let i = 0; i < 100; i++) {
       p = new Particle(this.firework.pos.x, this.firework.pos.y);
       this.particles.push(p);
     }
-  }
+  };
 
-  this.show = function() {
+  this.show = function () {
     if (!this.exploded) {
       this.firework.show();
     }
-    this.particles.forEach(function(particle){
+
+    this.particles.forEach(function (particle) {
       particle.show();
     });
-  }
+  };
 }
